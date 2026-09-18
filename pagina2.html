@@ -1,0 +1,502 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Diseño & Desarrollo Web | Código 404</title>
+  <link rel="icon" type="image/png" href="favicon.png">
+  <link rel="manifest" href="manifest.json">
+  <meta name="theme-color" content="#0f172a">
+
+  <style>
+    /* ==========================================
+       VARIABLES Y REINICIO GLOBAL
+       ========================================== */
+    :root {
+      --bg-dark: #0f172a;
+      --bg-card: #1e293b;
+      --bg-card-hover: #26354a;
+      --primary: #2563eb;
+      --primary-hover: #1d4ed8;
+      --accent-cyan: #38bdf8;
+      --accent-green: #22c55e;
+      --text-main: #f8fafc;
+      --text-muted: #94a3b8;
+      --border-color: #334155;
+      --radius: 16px;
+      --radius-sm: 8px;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: 'Segoe UI', system-ui, -apple-system, BlinkMacSystemFont, Roboto, sans-serif;
+    }
+
+    html {
+      scroll-behavior: smooth;
+      height: 100%;
+    }
+
+    body {
+      display: flex;
+      flex-direction: column;
+      min-height: 100vh;
+      background-color: var(--bg-dark);
+      color: var(--text-main);
+      line-height: 1.6;
+    }
+
+    .main-wrapper {
+      flex: 1 0 auto;
+    }
+
+    /* HEADER & NAVEGACIÓN */
+    header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1rem 2rem;
+      background-color: rgba(15, 23, 42, 0.95);
+      position: sticky;
+      top: 0;
+      backdrop-filter: blur(10px);
+      z-index: 100;
+      border-bottom: 1px solid var(--border-color);
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .brand-logo-img {
+      height: 40px;
+      width: auto;
+      object-fit: contain;
+      border-radius: 8px;
+    }
+
+    .brand-name {
+      font-size: 1.25rem;
+      font-weight: 700;
+      color: var(--text-main);
+    }
+
+    nav {
+      display: flex;
+      align-items: center;
+      gap: 1.5rem;
+    }
+
+    .nav-links {
+      display: flex;
+      list-style: none;
+      gap: 1.2rem;
+      align-items: center;
+    }
+
+    .nav-links a {
+      color: var(--text-muted);
+      text-decoration: none;
+      font-weight: 600;
+      font-size: 0.95rem;
+      padding: 0.4rem 0.8rem;
+      border-radius: 6px;
+      transition: all 0.3s ease;
+    }
+
+    .nav-links a:hover {
+      color: var(--text-main);
+      background-color: rgba(255, 255, 255, 0.05);
+    }
+
+    .nav-links a.active {
+      color: var(--accent-cyan);
+      background-color: rgba(56, 189, 248, 0.1);
+      border: 1px solid rgba(56, 189, 248, 0.3);
+    }
+
+    .menu-toggle {
+      display: none;
+      flex-direction: column;
+      justify-content: space-around;
+      width: 30px;
+      height: 24px;
+      background: transparent;
+      border: none;
+      cursor: pointer;
+      padding: 0;
+      z-index: 101;
+    }
+
+    .menu-toggle span {
+      width: 100%;
+      height: 3px;
+      background-color: var(--text-main);
+      border-radius: 2px;
+      transition: all 0.3s ease;
+    }
+
+    .btn-install {
+      background: linear-gradient(135deg, var(--primary), #3b82f6);
+      color: white;
+      border: none;
+      padding: 0.6rem 1.2rem;
+      border-radius: var(--radius-sm);
+      font-weight: 600;
+      cursor: pointer;
+      display: none;
+      transition: all 0.3s ease;
+    }
+
+    /* CONTENIDO DE DESARROLLO WEB */
+    .page-hero {
+      text-align: center;
+      padding: 3.5rem 1.5rem 2.5rem;
+      max-width: 900px;
+      margin: 0 auto;
+    }
+
+    .page-hero h1 {
+      font-size: 2.5rem;
+      font-weight: 800;
+      margin-bottom: 1rem;
+      background: linear-gradient(to right, #ffffff, var(--accent-cyan));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .page-hero p {
+      color: var(--text-muted);
+      font-size: 1.1rem;
+    }
+
+    .content-container {
+      max-width: 1100px;
+      margin: 0 auto 5rem;
+      padding: 0 1.5rem;
+      display: flex;
+      flex-direction: column;
+      gap: 3rem;
+    }
+
+    .section-card {
+      background-color: var(--bg-card);
+      border-radius: var(--radius);
+      border: 1px solid var(--border-color);
+      padding: 2.5rem;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+    }
+
+    .section-card h2 {
+      font-size: 1.8rem;
+      margin-bottom: 1.2rem;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      color: var(--text-main);
+    }
+
+    .section-card p {
+      color: var(--text-muted);
+      font-size: 1.05rem;
+      margin-bottom: 1.2rem;
+    }
+
+    .info-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 1.5rem;
+      margin-top: 1.5rem;
+    }
+
+    .info-box {
+      background-color: rgba(15, 23, 42, 0.6);
+      padding: 1.5rem;
+      border-radius: var(--radius-sm);
+      border-left: 4px solid var(--primary);
+    }
+
+    .info-box.success {
+      border-left-color: var(--accent-green);
+    }
+
+    .info-box h4 {
+      font-size: 1.1rem;
+      margin-bottom: 0.5rem;
+      color: var(--text-main);
+    }
+
+    .info-box p {
+      font-size: 0.95rem;
+      margin-bottom: 0;
+    }
+
+    .steps-list {
+      list-style: none;
+      counter-reset: step-counter;
+      margin-top: 1.5rem;
+    }
+
+    .steps-list li {
+      counter-increment: step-counter;
+      position: relative;
+      padding-left: 3.5rem;
+      margin-bottom: 1.5rem;
+      color: var(--text-muted);
+    }
+
+    .steps-list li::before {
+      content: counter(step-counter);
+      position: absolute;
+      left: 0;
+      top: 0;
+      width: 2.5rem;
+      height: 2.5rem;
+      background-color: var(--primary);
+      color: white;
+      font-weight: bold;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .steps-list strong {
+      color: var(--text-main);
+      display: block;
+      font-size: 1.1rem;
+    }
+
+    /* BOTONES FLOTANTES */
+    .floating-contact {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      z-index: 1000;
+    }
+
+    .btn-float {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 50px;
+      height: 50px;
+      border-radius: 50%;
+      color: white;
+      text-decoration: none;
+      border: none;
+      cursor: pointer;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.4);
+      font-size: 1.3rem;
+      transition: transform 0.2s ease, opacity 0.3s ease;
+    }
+
+    .btn-float:hover {
+      transform: scale(1.1);
+    }
+
+    .btn-whatsapp { background-color: #25D366; }
+    .btn-call { background-color: var(--primary); }
+
+    .btn-back-to-top {
+      background-color: #334155;
+      color: var(--text-main);
+      opacity: 0;
+      visibility: hidden;
+      transform: scale(0.8);
+    }
+
+    .btn-back-to-top.show {
+      opacity: 1;
+      visibility: visible;
+      transform: scale(1);
+    }
+
+    #contacto {
+      flex-shrink: 0;
+      width: 100%;
+      text-align: center;
+      padding: 1.8rem 1rem;
+      background-color: var(--bg-card);
+      border-top: 1px solid var(--border-color);
+      color: var(--text-muted);
+      font-size: 0.85rem;
+    }
+
+    #contacto strong { color: var(--text-main); }
+    #contacto a { color: var(--accent-cyan); text-decoration: none; font-weight: 600; }
+
+    @media (max-width: 900px) {
+      .menu-toggle { display: flex; }
+      .nav-links {
+        position: absolute;
+        top: 100%;
+        left: 0;
+        width: 100%;
+        background-color: rgba(15, 23, 42, 0.98);
+        flex-direction: column;
+        padding: 1.5rem;
+        gap: 1rem;
+        border-bottom: 1px solid var(--border-color);
+        display: none;
+      }
+      .nav-links.show { display: flex; }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="main-wrapper">
+    <header>
+      <div class="brand">
+        <img src="Logo Digital CD-404.jpg" alt="Logo Código 404" class="brand-logo-img">
+        <div class="brand-name">Código 404 Ciberseguridad</div>
+      </div>
+
+      <button class="menu-toggle" id="mobileMenuBtn" aria-label="Abrir menú">
+        <span></span><span></span><span></span>
+      </button>
+
+      <nav id="mainNav">
+        <ul class="nav-links">
+          <li><a href="index.html">Inicio</a></li>
+          <li><a href="pagina1.html">Ciberseguridad</a></li>
+          <li><a href="pagina2.html">Desarrollo Web</a></li>
+          <li><a href="pagina3.html">Capacitaciones</a></li>
+          <li><a href="pagina4.html">Contacto</a></li>
+        </ul>
+      </nav>
+
+      <div class="header-actions">
+        <button id="installApp" class="btn-install">📲 Instalar App</button>
+      </div>
+    </header>
+
+    <section class="page-hero">
+      <h1>Diseño & Desarrollo Web Profesional</h1>
+      <p>Creamos plataformas digitales de alta velocidad, seguras y optimizadas para impulsar la presencia online de tu negocio.</p>
+    </section>
+
+    <main class="content-container">
+      
+      <!-- PREGUNTA 1: ¿POR QUÉ? -->
+      <article class="section-card">
+        <h2>🌐 1. ¿Por qué es fundamental un sitio web moderno?</h2>
+        <p>Tu sitio web es la carta de presentación principal de tu empresa las 24 horas del día. Una plataforma desactualizada o lenta ahuyenta a potenciales clientes y perjudica la imagen corporativa.</p>
+        
+        <div class="info-grid">
+          <div class="info-box">
+            <h4>Primera Impresión Digital</h4>
+            <p>Los usuarios tardan menos de 3 segundos en decidir si se quedan o abandonan una página según su aspecto y velocidad.</p>
+          </div>
+          <div class="info-box">
+            <h4>Navegación Móvil Predominante</h4>
+            <p>Más del 70% del tráfico web proviene de dispositivos móviles; tu sitio debe ser 100% responsivo.</p>
+          </div>
+          <div class="info-box">
+            <h4>Visibilidad en Google (SEO)</h4>
+            <p>Un desarrollo web optimizado técnicamente posiciona a tu empresa en los primeros lugares de búsqueda.</p>
+          </div>
+        </div>
+      </article>
+
+      <!-- PREGUNTA 2: ¿PARA QUÉ? -->
+      <article class="section-card">
+        <h2>🚀 2. ¿Para qué desarrollar una plataforma web con nosotros?</h2>
+        <p>Diseñamos sitios que combinan estética atractiva, máxima velocidad y altos estándares de ciberseguridad integrados desde la raíz.</p>
+        
+        <div class="info-grid">
+          <div class="info-box success">
+            <h4>Captación de Clientes</h4>
+            <p>Estructuras enfocadas en la conversión con botones directos a WhatsApp y llamada rápida.</p>
+          </div>
+          <div class="info-box success">
+            <h4>Aplicaciones Web Instalables (PWA)</h4>
+            <p>Convertimos tu sitio en una app funcional que tus clientes pueden instalar directo en sus celulares.</p>
+          </div>
+          <div class="info-box success">
+            <h4>Seguridad & Blindaje Integrado</h4>
+            <p>Protegemos tu sitio contra inyecciones de código, malware y accesos no autorizados.</p>
+          </div>
+        </div>
+      </article>
+
+      <!-- PREGUNTA 3: ¿CÓMO? -->
+      <article class="section-card">
+        <h2>💻 3. ¿Cómo llevamos a cabo el proceso de desarrollo?</h2>
+        <p>Utilizamos un flujo de trabajo ágil e interactivo para asegurar que el resultado cumpla con todas tus expectativas:</p>
+        
+        <ol class="steps-list">
+          <li>
+            <strong>Levantamiento de Requerimientos & Diseño UI/UX</strong>
+            Definimos la arquitectura del sitio, paleta de colores corporativos y prototipos de navegación intuitiva.
+          </li>
+          <li>
+            <strong>Desarrollo Cifrado & Optimización de Carga</strong>
+            Programación en código limpio, compresión de imágenes y optimización de velocidad para máximo rendimiento.
+          </li>
+          <li>
+            <strong>Integración PWA & Protocolos de Seguridad</strong>
+            Configuración de certificados SSL, manifest PWA para móviles y barreras de protección de datos.
+          </li>
+          <li>
+            <strong>Despliegue & Soporte Continuo</strong>
+            Publicación en servidor seguro, pruebas finales en múltiples dispositivos y capacitación de uso.
+          </li>
+        </ol>
+      </article>
+
+    </main>
+  </div>
+
+  <footer id="contacto">
+    <p>Creado por <strong>&copy; Código 404 Ciberseguridad</strong> | <a href="mailto:codigo404ciberseg@gmail.com">Contacto</a></p>
+    <p>Todos los Derechos Reservados</p>
+  </footer>
+
+  <div class="floating-contact">
+    <button id="backToTop" class="btn-float btn-back-to-top" title="Volver arriba">⬆️</button>
+    <a href="https://wa.me/56986532515?text=Hola,%20quisiera%20cotizar%20un%20sitio%20web" class="btn-float btn-whatsapp" target="_blank">💬</a>
+    <a href="tel:+56986532515" class="btn-float btn-call">📞</a>
+  </div>
+
+  <script>
+    const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+    const navLinks = document.querySelector('.nav-links');
+
+    mobileMenuBtn.addEventListener('click', () => {
+      navLinks.classList.toggle('show');
+    });
+
+    const currentPath = window.location.pathname.split('/').pop() || 'index.html';
+    const links = document.querySelectorAll('.nav-links a');
+
+    links.forEach(link => {
+      const linkPath = link.getAttribute('href');
+      if (linkPath === currentPath) {
+        link.classList.add('active');
+      }
+    });
+
+    const backToTopBtn = document.getElementById('backToTop');
+    window.addEventListener('scroll', () => {
+      if (window.scrollY > 300) {
+        backToTopBtn.classList.add('show');
+      } else {
+        backToTopBtn.classList.remove('show');
+      }
+    });
+
+    backToTopBtn.addEventListener('click', () => {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    });
+  </script>
+</body>
+</html>
