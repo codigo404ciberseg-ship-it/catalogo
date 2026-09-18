@@ -1,20 +1,15 @@
 {
-  "short_name": "TecnoSoluciones",
-  "name": "Soluciones Tecnológicas Integrales",
+  "short_name": "Código404",
+  "name": "Código 404 Ciberseguridad",
   "icons": [
     {
-      "src": "https://via.placeholder.com/192",
-      "type": "image/png",
-      "sizes": "192x192"
-    },
-    {
-      "src": "https://via.placeholder.com/512",
-      "type": "image/png",
-      "sizes": "512x512"
+      "src": "Logo Digital CD-404.jpg",
+      "type": "image/jpg",
+      "sizes": "192x192 512x512"
     }
   ],
-  "start_url": "/",
+  "start_url": "./index.html",
   "background_color": "#0f172a",
-  "theme_color": "#2563eb",
+  "theme_color": "#f172a",
   "display": "standalone"
 }
