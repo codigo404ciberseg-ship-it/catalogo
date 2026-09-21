@@ -164,9 +164,8 @@
       font-size: 2.5rem;
       font-weight: 800;
       margin-bottom: 1rem;
-      background: linear-gradient(to right, #ffffff, var(--accent-cyan));
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
+      background: linear-gradient(to right, #014d0b, var(--accent-cyan));
+  
     }
 
     .page-hero p {
@@ -463,18 +462,18 @@
       }
       .nav-links.show { display: flex; }
     }
+
   </style>
 </head>
 <body>
-
-  <div class="main-wrapper">
-    <header>
+    <div class="main-wrapper">
+        <header>
       <div class="brand">
         <img src="Logo Digital CD-404.jpg" alt="Logo Código 404" class="brand-logo-img">
         <div class="brand-name">Código 404 Ciberseguridad</div>
-      </div>
+    </div>
 
-      <button class="menu-toggle" id="mobileMenuBtn" aria-label="Abrir menú">
+    <button class="menu-toggle" id="mobileMenuBtn" aria-label="Abrir menú">
         <span></span><span></span><span></span>
       </button>
 
@@ -485,6 +484,7 @@
           <li><a href="pagina2.html">Desarrollo Web</a></li>
           <li><a href="pagina3.html">Capacitaciones</a></li>
           <li><a href="pagina4.html">Contacto</a></li>
+          <li><a href="pagina5.html" class="active">Servicios Externos</a></li>
         </ul>
       </nav>
 
@@ -494,134 +494,120 @@
     </header>
 
     <section class="page-hero">
-      <h1>Hablemos de tu Proyecto</h1>
-      <p>Estamos listos para convertir tu idea en una aplicación web de alto rendimiento. Contáctanos y recibe una cotización personalizada.</p>
+      <h1>Infraestructura & Costos Transparentes</h1>
+      <h2>Servicios Externos</h2>
+      <p>
+        Para que tu sitio web o aplicación funcione de forma permanente en internet, se requieren tres componentes clave de 
+        infraestructura. En Código 404 Ciberseguridad te explicamos cada uno y te asesoramos para contratarlos directamente a 
+        tu nombre.
+      </p>
     </section>
 
     <main class="content-container">
-      
-      <!-- GRILLA DE CONTACTO + FORMULARIO -->
-      <div class="contact-grid">
-        
-        <!-- DATOS DE CONTACTO -->
+
+        <!-- DOMINIO WEB -->
         <div class="info-card">
           <div class="info-item">
-            <div class="info-icon">📧</div>
+            <div class="info-icon">🌐</div>
             <div class="info-text">
-              <h4>Email</h4>
-              <p><a href="mailto:codigo404ciberseg@gmail.com">codigo404ciberseg@gmail.com</a></p>
+              <h4>1. Dominio Web</h4>
+              <h5>Identidad Digital (.cl / .com)</h5>
+              <p>
+              Es la dirección única con la que tus clientes accederán a tu plataforma desde cualquier navegador.
+              </p>
+              <ul class="service-list"></ul>
+              <li>Ejemplo: <code>tuempresa.cl</code> o <code>tuempresa.com</code></li>
+              <li>Inscripción legal a nombre del cliente (ej. NIC Chile).</li>
+              <li>Permite habilitar correos corporativos profesionales.</li>
             </div>
-          </div>
-
-          <div class="info-item">
-            <div class="info-icon">📱</div>
-            <div class="info-text">
-              <h4>Teléfono</h4>
-              <p><a href="tel:+56986532515">+56 9 8653 2515</a></p>
             </div>
-          </div>
+        </main>
 
-          <div class="info-item">
-            <div class="info-icon">📍</div>
-            <div class="info-text">
-              <h4>Ubicación</h4>
-              <p>Nueva Imperial - La Araucanía</p>
-            </div>
-          </div>
+        <main class="content-container">
 
-          <div class="info-item">
-            <div class="info-icon">🕒</div>
-            <div class="info-text">
-              <h4>Horario</h4>
-              <p>Lunes a Viernes: 9:00 - 18:00 hrs.</p>
-            </div>
-          </div>
-        </div>
-
-        <!-- FORMULARIO -->
-        <div class="form-card">
-          <h2>Solicita tu Cotización Gratuita</h2>
-          <p>Completa el formulario y te responderemos en menos de 24 horas hábiles.</p>
-
-          <form id="quoteForm">
-            <div class="form-group">
-              <label for="nombre">Nombre completo *</label>
-              <input type="text" id="nombre" class="form-control" placeholder="Ej. Juan Pérez" required>
-            </div>
-
-            <div class="form-group">
-              <label for="empresa">Empresa</label>
-              <input type="text" id="empresa" class="form-control" placeholder="Nombre de tu empresa o PyME">
-            </div>
-
-            <div class="form-group">
-              <label for="email">Email *</label>
-              <input type="email" id="email" class="form-control" placeholder="correo@ejemplo.com" required>
-            </div>
-
-            <div class="form-group">
-              <label for="telefono">Teléfono</label>
-              <input type="tel" id="telefono" class="form-control" placeholder="+56 9 1234 5678">
-            </div>
-
-            <div class="form-group">
-              <label for="servicio">Servicio de interés *</label>
-              <select id="servicio" class="form-control" required>
-                <option value="" disabled selected>Selecciona una opción</option>
-                <option value="pwa">Progressive Web App (PWA)</option>
-                <option value="web">Sitio Web a Medida</option>
-                <option value="ecommerce">E-Commerce / Tienda Online</option>
-                <option value="uiux">Diseño UI/UX</option>
-                <option value="otro">Otro</option>
-              </select>
-            </div>
-
-            <div class="form-group">
-              <label for="mensaje">Cuéntanos sobre tu proyecto *</label>
-              <textarea id="mensaje" class="form-control" placeholder="Describe brevemente tus necesidades o requerimientos..." required></textarea>
-            </div>
-
-            <button type="submit" class="btn-submit">Enviar Solicitud →</button>
-          </form>
-        </div>
-
+            <!-- Hosting -->
+      <div class="info-card">
+        <div class="info-item">
+        <div class="info-icon">🖥️</div>
+        <div class="info-text">
+        <h4>2. Hosting / Alojamiento</h4>
+        <h5>Almacenamiento 24/7</h5>
+        <p>
+            Es el espacio en un servidor especializado donde se guardan las imágenes, bases de datos y archivos de tu sitio 
+            web.
+        </p>
+        <ul class="service-list">
+          <li>Alojamiento de alta velocidad con soporte nacional.</li>
+          <li>Respaldos de seguridad periódicos.</li>
+          <li>Proveedores destacados como Ninja Hosting.</li>
+        </ul>
       </div>
-
-      <!-- SECCIÓN PREGUNTAS FRECUENTES -->
-      <section class="faq-section">
-        <h2>Preguntas Frecuentes</h2>
-
-        <div class="faq-item">
-          <div class="faq-question">¿Cuánto tiempo toma desarrollar una PWA?</div>
-          <div class="faq-answer">Dependiendo de la complejidad, entre 2 y 8 semanas. Proyectos simples como catálogos pueden estar listos en 15 días.</div>
-        </div>
-
-        <div class="faq-item">
-          <div class="faq-question">¿Necesito publicar la app en Play Store o App Store?</div>
-          <div class="faq-answer">No es obligatorio. Las PWA se instalan directamente desde el navegador. Sin embargo, podemos empaquetarla para las tiendas si lo deseas.</div>
-        </div>
-
-        <div class="faq-item">
-          <div class="faq-question">¿Funciona realmente sin internet?</div>
-          <div class="faq-answer">Sí. Mediante Service Workers, la app guarda en caché el contenido clave para que tus usuarios puedan navegar incluso sin conexión.</div>
-        </div>
-
-        <div class="faq-item">
-          <div class="faq-question">¿Qué incluye el mantenimiento?</div>
-          <div class="faq-answer">Actualizaciones de seguridad, mejoras de rendimiento, soporte técnico y ajustes menores. Planes mensuales competitivos.</div>
-        </div>
-      </section>
-
-      <!-- PROMO / DEMO -->
-      <section class="promo-card">
-        <h3>¿Listo para dar el salto digital?</h3>
-        <p>Descarga esta misma demo en tu teléfono y comprueba la experiencia de primera mano.</p>
-        <button id="promoInstallBtn" class="btn-promo-install">📲 Instalar esta Demo</button>
-      </section>
-
+      </div>          
     </main>
-  </div>
+      
+      <main class="content-container">    
 
+      <!-- Servidor Cloud & CDN -->
+      <div class="info-card">
+        <div class="info-item">
+        <div class="info-icon">⚡</div>
+        <div class="info-text">
+        <h4>3. Servidor Cloud & CDN</h4>
+        <h5>Carga Instantánea & PWA</h5>
+        <p>
+            Red de distribución global que acelera la carga en teléfonos móviles y proporciona seguridad con certificado SSL.
+        </p>
+        <ul class="service-list">
+          <li>Certificado de Seguridad HTTPS (Candado seguro).</li>
+          <li>Compatibilidad completa con PWA (Modo Offline).</li>
+          <li>Protección contra caídas e interrupciones.</li>
+        </ul>
+      </div>
+    </div>
+</main>
+
+<main class="content-container">
+    <!-- SECCIÓN NINJA HOSTING Y VALORES APROXIMADOS -->
+    <div class="info-card">
+      <div class="info-item">
+        <div class="info-icon">💡</div>
+        <div class="info-text">
+        <h4>4. Proveedores Recomendados & Valores Referenciales</h4>
+        <p>
+          Mantenemos la transparencia total con nuestros clientes. Los costos de dominio y hosting se pagan directamente a los 
+          proveedores oficiales sin intermediarios ni cobros ocultos:
+        </p>
+        <p>
+            <strong>(Haga click en las imágenes para ir al sitio correspondiente)</strong>
+        </p>
+        <ul class="service-list">
+            <li>
+                <strong>Dominio .CL (NIC Chile):</strong> $10.990 / año
+            <br>
+            <a href="https://www.nic.cl/" target="_blank" rel="noopener noreferrer">
+                <img src="Nic-chile.png" alt="Nic Chile" class="brand-logo-img">
+            </a>
+            </li>
+
+            <li>
+                <strong>Hosting Emprendedor (Ninja Hosting):</strong> $25.000 - $35.000 / año
+            <br>
+            <a href="https://www.ninjahosting.cl/" target="_blank" rel="noopener noreferrer">
+                <img src="Ninjahosting.png" alt="Ninjahosting" class="brand-logo-img">
+            </a>
+            </li>
+
+            <li>
+                <strong>Servidor Cloud & CDN (Cloudflare):</strong> $0 / mes (Incluido en PWA)
+            <br>
+            <a href="https://www.cloudflare.com/" taget="_blank" rel="noopener noreferrer">
+                <img src="Cloudflare.png" alt="Cloudflare" class="brand-logo-img">
+            </a>
+            </li>
+        </div>           
+        </ul>
+    </main>
+          
   <footer id="contacto">
     <p>Creado por <strong>&copy; Código 404 Ciberseguridad</strong> | <a href="mailto:codigo404ciberseg@gmail.com">Contacto</a></p>
     <p>Todos los Derechos Reservados</p>
@@ -669,6 +655,14 @@
       alert('¡Gracias por comunicarte! Hemos recibido tu mensaje y responderemos pronto.');
       e.target.reset();
     });
+
+
+    // Registro del Service Worker para la PWA
+    if ('serviceWorker' in navigator) {
+      navigator.serviceWorker.register('./sw.js')
+        .then(() => console.log('SW registrado en Servicios Externos'))
+        .catch(err => console.error('Error en SW:', err));
+    }
   </script>
 </body>
 </html>
