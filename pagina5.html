@@ -1,0 +1,668 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Hablemos de tu Proyecto | Código 404</title>
+  <link rel="icon" type="image/png" href="favicon.png">
+  <link rel="manifest" href="manifest.json">
+  <meta name="theme-color" content="#0f172a">
+
+  <style>
+    /* ==========================================
+       VARIABLES Y REINICIO GLOBAL
+       ========================================== */
+    :root {
+      --bg-dark: #0f172a;
+      --bg-card: #1e293b;
+      --bg-card-hover: #26354a;
+      --primary: #2563eb;
+      --primary-hover: #1d4ed8;
+      --accent-cyan: #38bdf8;
+      --accent-green: #22c55e;
+      --text-main: #f8fafc;
+      --text-muted: #94a3b8;
+      --border-color: #334155;
+      --radius: 16px;
+      --radius-sm: 8px;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: 'Segoe UI', system-ui, -apple-system, BlinkMacSystemFont, Roboto, sans-serif;
+    }
+
+    html {
+      scroll-behavior: smooth;
+      height: 100%;
+    }
+
+    body {
+      display: flex;
+      flex-direction: column;
+      min-height: 100vh;
+      background-color: var(--bg-dark);
+      color: var(--text-main);
+      line-height: 1.6;
+    }
+
+    .main-wrapper {
+      flex: 1 0 auto;
+    }
+
+    /* HEADER & NAVEGACIÓN */
+    header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1rem 2rem;
+      background-color: rgba(15, 23, 42, 0.95);
+      position: sticky;
+      top: 0;
+      backdrop-filter: blur(10px);
+      z-index: 100;
+      border-bottom: 1px solid var(--border-color);
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .brand-logo-img {
+      height: 40px;
+      width: auto;
+      object-fit: contain;
+      border-radius: 8px;
+    }
+
+    .brand-name {
+      font-size: 1.25rem;
+      font-weight: 700;
+      color: var(--text-main);
+    }
+
+    nav {
+      display: flex;
+      align-items: center;
+      gap: 1.5rem;
+    }
+
+    .nav-links {
+      display: flex;
+      list-style: none;
+      gap: 1.2rem;
+      align-items: center;
+    }
+
+    .nav-links a {
+      color: var(--text-muted);
+      text-decoration: none;
+      font-weight: 600;
+      font-size: 0.95rem;
+      padding: 0.4rem 0.8rem;
+      border-radius: 6px;
+      transition: all 0.3s ease;
+    }
+
+    .nav-links a:hover {
+      color: var(--text-main);
+      background-color: rgba(255, 255, 255, 0.05);
+    }
+
+    .nav-links a.active {
+      color: var(--accent-cyan);
+      background-color: rgba(56, 189, 248, 0.1);
+      border: 1px solid rgba(56, 189, 248, 0.3);
+    }
+
+    .menu-toggle {
+      display: none;
+      flex-direction: column;
+      justify-content: space-around;
+      width: 30px;
+      height: 24px;
+      background: transparent;
+      border: none;
+      cursor: pointer;
+      padding: 0;
+      z-index: 101;
+    }
+
+    .menu-toggle span {
+      width: 100%;
+      height: 3px;
+      background-color: var(--text-main);
+      border-radius: 2px;
+      transition: all 0.3s ease;
+    }
+
+    .btn-install {
+      background: linear-gradient(135deg, var(--primary), #3b82f6);
+      color: white;
+      border: none;
+      padding: 0.6rem 1.2rem;
+      border-radius: var(--radius-sm);
+      font-weight: 600;
+      cursor: pointer;
+      display: none;
+      transition: all 0.3s ease;
+    }
+
+    /* CONTENIDO SECCIÓN CONTACTO Y FORMULARIO */
+    .page-hero {
+      text-align: center;
+      padding: 3.5rem 1.5rem 2.5rem;
+      max-width: 900px;
+      margin: 0 auto;
+    }
+
+    .page-hero h1 {
+      font-size: 2.5rem;
+      font-weight: 800;
+      margin-bottom: 1rem;
+      background: linear-gradient(to right, #014d0b, var(--accent-cyan));
+  
+    }
+
+    .page-hero p {
+      color: var(--text-muted);
+      font-size: 1.1rem;
+    }
+
+    .content-container {
+      max-width: 1100px;
+      margin: 0 auto 5rem;
+      padding: 0 1.5rem;
+      display: flex;
+      flex-direction: column;
+      gap: 3rem;
+    }
+
+    .contact-grid {
+      display: grid;
+      grid-template-columns: 1fr 1.3fr;
+      gap: 2rem;
+    }
+
+    @media (max-width: 850px) {
+      .contact-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .info-card {
+      background-color: var(--bg-card);
+      border-radius: var(--radius);
+      border: 1px solid var(--border-color);
+      padding: 2.5rem;
+      display: flex;
+      flex-direction: column;
+      gap: 1.8rem;
+    }
+
+    .info-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 1rem;
+    }
+
+    .info-icon {
+      font-size: 1.8rem;
+      background: rgba(56, 189, 248, 0.1);
+      padding: 0.8rem;
+      border-radius: var(--radius-sm);
+      color: var(--accent-cyan);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .info-text h4 {
+      font-size: 1.1rem;
+      color: var(--text-main);
+      margin-bottom: 0.2rem;
+    }
+
+    .info-text p, .info-text a {
+      color: var(--text-muted);
+      font-size: 0.95rem;
+      text-decoration: none;
+    }
+
+    .info-text a:hover {
+      color: var(--accent-cyan);
+    }
+
+    /* FORMULARIO DE COTIZACIÓN */
+    .form-card {
+      background-color: var(--bg-card);
+      border-radius: var(--radius);
+      border: 1px solid var(--border-color);
+      padding: 2.5rem;
+    }
+
+    .form-card h2 {
+      font-size: 1.6rem;
+      margin-bottom: 0.5rem;
+      color: var(--text-main);
+    }
+
+    .form-card p {
+      color: var(--text-muted);
+      font-size: 0.95rem;
+      margin-bottom: 1.8rem;
+    }
+
+    .form-group {
+      margin-bottom: 1.2rem;
+    }
+
+    .form-group label {
+      display: block;
+      margin-bottom: 0.4rem;
+      font-size: 0.9rem;
+      font-weight: 600;
+      color: var(--text-main);
+    }
+
+    .form-control {
+      width: 100%;
+      padding: 0.8rem 1rem;
+      background-color: var(--bg-dark);
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius-sm);
+      color: var(--text-main);
+      font-size: 0.95rem;
+      outline: none;
+      transition: border-color 0.3s ease;
+    }
+
+    .form-control:focus {
+      border-color: var(--accent-cyan);
+    }
+
+    textarea.form-control {
+      resize: vertical;
+      min-height: 100px;
+    }
+
+    .btn-submit {
+      width: 100%;
+      background-color: var(--primary);
+      color: white;
+      border: none;
+      padding: 0.9rem 1.5rem;
+      border-radius: var(--radius-sm);
+      font-size: 1rem;
+      font-weight: 700;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+    }
+
+    .btn-submit:hover {
+      background-color: var(--primary-hover);
+    }
+
+    /* PREGUNTAS FRECUENTES (FAQ) */
+    .faq-section {
+      background-color: var(--bg-card);
+      border-radius: var(--radius);
+      border: 1px solid var(--border-color);
+      padding: 2.5rem;
+    }
+
+    .faq-section h2 {
+      font-size: 1.8rem;
+      margin-bottom: 1.5rem;
+      text-align: center;
+      color: var(--text-main);
+    }
+
+    .faq-item {
+      border-bottom: 1px solid var(--border-color);
+      padding: 1.2rem 0;
+    }
+
+    .faq-item:last-child {
+      border-bottom: none;
+    }
+
+    .faq-question {
+      font-weight: 700;
+      font-size: 1.1rem;
+      color: var(--accent-cyan);
+      margin-bottom: 0.5rem;
+    }
+
+    .faq-answer {
+      color: var(--text-muted);
+      font-size: 0.95rem;
+    }
+
+    /* BANNER PROMO DEMO */
+    .promo-card {
+      background: linear-gradient(135deg, #1e293b, #0f172a);
+      border: 1px solid var(--accent-cyan);
+      border-radius: var(--radius);
+      padding: 2.5rem;
+      text-align: center;
+      box-shadow: 0 0 20px rgba(56, 189, 248, 0.15);
+    }
+
+    .promo-card h3 {
+      font-size: 1.8rem;
+      margin-bottom: 0.8rem;
+      color: var(--text-main);
+    }
+
+    .promo-card p {
+      color: var(--text-muted);
+      margin-bottom: 1.5rem;
+    }
+
+    .btn-promo-install {
+      background-color: var(--accent-green);
+      color: #000;
+      border: none;
+      padding: 0.8rem 1.8rem;
+      border-radius: var(--radius-sm);
+      font-weight: 700;
+      font-size: 1rem;
+      cursor: pointer;
+      transition: transform 0.2s ease, opacity 0.3s ease;
+    }
+
+    .btn-promo-install:hover {
+      transform: scale(1.05);
+    }
+
+    /* BOTONES FLOTANTES */
+    .floating-contact {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      z-index: 1000;
+    }
+
+    .btn-float {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 50px;
+      height: 50px;
+      border-radius: 50%;
+      color: white;
+      text-decoration: none;
+      border: none;
+      cursor: pointer;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.4);
+      font-size: 1.3rem;
+      transition: transform 0.2s ease, opacity 0.3s ease;
+    }
+
+    .btn-float:hover {
+      transform: scale(1.1);
+    }
+
+    .btn-whatsapp { background-color: #25D366; }
+    .btn-call { background-color: var(--primary); }
+
+    .btn-back-to-top {
+      background-color: #334155;
+      color: var(--text-main);
+      opacity: 0;
+      visibility: hidden;
+      transform: scale(0.8);
+    }
+
+    .btn-back-to-top.show {
+      opacity: 1;
+      visibility: visible;
+      transform: scale(1);
+    }
+
+    #contacto {
+      flex-shrink: 0;
+      width: 100%;
+      text-align: center;
+      padding: 1.8rem 1rem;
+      background-color: var(--bg-card);
+      border-top: 1px solid var(--border-color);
+      color: var(--text-muted);
+      font-size: 0.85rem;
+    }
+
+    #contacto strong { color: var(--text-main); }
+    #contacto a { color: var(--accent-cyan); text-decoration: none; font-weight: 600; }
+
+    @media (max-width: 900px) {
+      .menu-toggle { display: flex; }
+      .nav-links {
+        position: absolute;
+        top: 100%;
+        left: 0;
+        width: 100%;
+        background-color: rgba(15, 23, 42, 0.98);
+        flex-direction: column;
+        padding: 1.5rem;
+        gap: 1rem;
+        border-bottom: 1px solid var(--border-color);
+        display: none;
+      }
+      .nav-links.show { display: flex; }
+    }
+
+  </style>
+</head>
+<body>
+    <div class="main-wrapper">
+        <header>
+      <div class="brand">
+        <img src="Logo Digital CD-404.jpg" alt="Logo Código 404" class="brand-logo-img">
+        <div class="brand-name">Código 404 Ciberseguridad</div>
+    </div>
+
+    <button class="menu-toggle" id="mobileMenuBtn" aria-label="Abrir menú">
+        <span></span><span></span><span></span>
+      </button>
+
+      <nav id="mainNav">
+        <ul class="nav-links">
+          <li><a href="index.html">Inicio</a></li>
+          <li><a href="pagina1.html">Ciberseguridad</a></li>
+          <li><a href="pagina2.html">Desarrollo Web</a></li>
+          <li><a href="pagina3.html">Capacitaciones</a></li>
+          <li><a href="pagina4.html">Contacto</a></li>
+          <li><a href="pagina5.html" class="active">Servicios Externos</a></li>
+        </ul>
+      </nav>
+
+      <div class="header-actions">
+        <button id="installApp" class="btn-install">📲 Instalar App</button>
+      </div>
+    </header>
+
+    <section class="page-hero">
+      <h1>Infraestructura & Costos Transparentes</h1>
+      <h2>Servicios Externos</h2>
+      <p>
+        Para que tu sitio web o aplicación funcione de forma permanente en internet, se requieren tres componentes clave de 
+        infraestructura. En Código 404 Ciberseguridad te explicamos cada uno y te asesoramos para contratarlos directamente a 
+        tu nombre.
+      </p>
+    </section>
+
+    <main class="content-container">
+
+        <!-- DOMINIO WEB -->
+        <div class="info-card">
+          <div class="info-item">
+            <div class="info-icon">🌐</div>
+            <div class="info-text">
+              <h4>1. Dominio Web</h4>
+              <h5>Identidad Digital (.cl / .com)</h5>
+              <p>
+              Es la dirección única con la que tus clientes accederán a tu plataforma desde cualquier navegador.
+              </p>
+              <ul class="service-list"></ul>
+              <li>Ejemplo: <code>tuempresa.cl</code> o <code>tuempresa.com</code></li>
+              <li>Inscripción legal a nombre del cliente (ej. NIC Chile).</li>
+              <li>Permite habilitar correos corporativos profesionales.</li>
+            </div>
+            </div>
+        </main>
+
+        <main class="content-container">
+
+            <!-- Hosting -->
+      <div class="info-card">
+        <div class="info-item">
+        <div class="info-icon">🖥️</div>
+        <div class="info-text">
+        <h4>2. Hosting / Alojamiento</h4>
+        <h5>Almacenamiento 24/7</h5>
+        <p>
+            Es el espacio en un servidor especializado donde se guardan las imágenes, bases de datos y archivos de tu sitio 
+            web.
+        </p>
+        <ul class="service-list">
+          <li>Alojamiento de alta velocidad con soporte nacional.</li>
+          <li>Respaldos de seguridad periódicos.</li>
+          <li>Proveedores destacados como Ninja Hosting.</li>
+        </ul>
+      </div>
+      </div>          
+    </main>
+      
+      <main class="content-container">    
+
+      <!-- Servidor Cloud & CDN -->
+      <div class="info-card">
+        <div class="info-item">
+        <div class="info-icon">⚡</div>
+        <div class="info-text">
+        <h4>3. Servidor Cloud & CDN</h4>
+        <h5>Carga Instantánea & PWA</h5>
+        <p>
+            Red de distribución global que acelera la carga en teléfonos móviles y proporciona seguridad con certificado SSL.
+        </p>
+        <ul class="service-list">
+          <li>Certificado de Seguridad HTTPS (Candado seguro).</li>
+          <li>Compatibilidad completa con PWA (Modo Offline).</li>
+          <li>Protección contra caídas e interrupciones.</li>
+        </ul>
+      </div>
+    </div>
+</main>
+
+<main class="content-container">
+    <!-- SECCIÓN NINJA HOSTING Y VALORES APROXIMADOS -->
+    <div class="info-card">
+      <div class="info-item">
+        <div class="info-icon">💡</div>
+        <div class="info-text">
+        <h4>4. Proveedores Recomendados & Valores Referenciales</h4>
+        <p>
+          Mantenemos la transparencia total con nuestros clientes. Los costos de dominio y hosting se pagan directamente a los 
+          proveedores oficiales sin intermediarios ni cobros ocultos:
+        </p>
+        <p>
+            <strong>(Haga click en las imágenes para ir al sitio correspondiente)</strong>
+        </p>
+        <ul class="service-list">
+            <li>
+                <strong>Dominio .CL (NIC Chile):</strong> $10.990 / año
+            <br>
+            <a href="https://www.nic.cl/" target="_blank" rel="noopener noreferrer">
+                <img src="Nic-chile.png" alt="Nic Chile" class="brand-logo-img">
+            </a>
+            </li>
+
+            <li>
+                <strong>Hosting Emprendedor (Ninja Hosting):</strong> $25.000 - $35.000 / año
+            <br>
+            <a href="https://www.ninjahosting.cl/" target="_blank" rel="noopener noreferrer">
+                <img src="Ninjahosting.png" alt="Ninjahosting" class="brand-logo-img">
+            </a>
+            </li>
+
+            <li>
+                <strong>Servidor Cloud & CDN (Cloudflare):</strong> $0 / mes (Incluido en PWA)
+            <br>
+            <a href="https://www.cloudflare.com/" taget="_blank" rel="noopener noreferrer">
+                <img src="Cloudflare.png" alt="Cloudflare" class="brand-logo-img">
+            </a>
+            </li>
+        </div>           
+        </ul>
+    </main>
+          
+  <footer id="contacto">
+    <p>Creado por <strong>&copy; Código 404 Ciberseguridad</strong> | <a href="mailto:codigo404ciberseg@gmail.com">Contacto</a></p>
+    <p>Todos los Derechos Reservados</p>
+  </footer>
+
+  <div class="floating-contact">
+    <button id="backToTop" class="btn-float btn-back-to-top" title="Volver arriba">⬆️</button>
+    <a href="https://wa.me/56986532515?text=Hola,%20quisiera%20solicitar%20una%20cotizaci%C3%B3n%20para%20un%20proyecto" class="btn-float btn-whatsapp" target="_blank">💬</a>
+    <a href="tel:+56986532515" class="btn-float btn-call">📞</a>
+  </div>
+
+  <script>
+    const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+    const navLinks = document.querySelector('.nav-links');
+
+    mobileMenuBtn.addEventListener('click', () => {
+      navLinks.classList.toggle('show');
+    });
+
+    const currentPath = window.location.pathname.split('/').pop() || 'index.html';
+    const links = document.querySelectorAll('.nav-links a');
+
+    links.forEach(link => {
+      const linkPath = link.getAttribute('href');
+      if (linkPath === currentPath) {
+        link.classList.add('active');
+      }
+    });
+
+    const backToTopBtn = document.getElementById('backToTop');
+    window.addEventListener('scroll', () => {
+      if (window.scrollY > 300) {
+        backToTopBtn.classList.add('show');
+      } else {
+        backToTopBtn.classList.remove('show');
+      }
+    });
+
+    backToTopBtn.addEventListener('click', () => {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    });
+
+    document.getElementById('quoteForm').addEventListener('submit', (e) => {
+      e.preventDefault();
+      alert('¡Gracias por comunicarte! Hemos recibido tu mensaje y responderemos pronto.');
+      e.target.reset();
+    });
+
+
+    // Registro del Service Worker para la PWA
+    if ('serviceWorker' in navigator) {
+      navigator.serviceWorker.register('./sw.js')
+        .then(() => console.log('SW registrado en Servicios Externos'))
+        .catch(err => console.error('Error en SW:', err));
+    }
+  </script>
+</body>
+</html>
