@@ -527,6 +527,174 @@
         font-size: 1.05rem;
       }
     }
+
+    <!-- ESTILOS CSS DEL BANNER -->
+<style>
+  .tech-banner-container {
+    width: 100%;
+    max-width: 1100px;
+    margin: 2rem auto;
+    padding: 0 1rem;
+    box-sizing: border-box;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  }
+
+  .tech-banner-card {
+    background: #0f172a;
+    border: 1px solid #1e293b;
+    border-top: 3px solid #38bdf8;
+    border-radius: 12px;
+    padding: 2.5rem 2rem;
+    box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.5), 0 0 15px rgba(56, 189, 248, 0.1);
+    color: #f8fafc;
+  }
+
+  .tech-banner-header {
+    text-align: center;
+    margin-bottom: 2.5rem;
+  }
+
+  .tech-badge {
+    display: inline-block;
+    background: rgba(56, 189, 248, 0.1);
+    color: #38bdf8;
+    border: 1px solid rgba(56, 189, 248, 0.3);
+    font-size: 0.85rem;
+    font-weight: 600;
+    padding: 0.35rem 1rem;
+    border-radius: 50px;
+    margin-bottom: 1rem;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+  }
+
+  .tech-banner-header h2 {
+    font-size: 1.8rem;
+    font-weight: 700;
+    margin: 0 0 0.75rem 0;
+    color: #ffffff;
+  }
+
+  .tech-subtitle {
+    color: #94a3b8;
+    font-size: 1rem;
+    max-width: 650px;
+    margin: 0 auto;
+    line-height: 1.5;
+  }
+
+  .tech-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 1.5rem;
+    margin-bottom: 2.5rem;
+  }
+
+  .tech-item {
+    background: #1e293b;
+    border: 1px solid #334155;
+    border-radius: 8px;
+    padding: 1.5rem;
+    display: flex;
+    gap: 1rem;
+    align-items: flex-start;
+    transition: transform 0.2s ease, border-color 0.2s ease;
+  }
+
+  .tech-item:hover {
+    transform: translateY(-3px);
+    border-color: #38bdf8;
+  }
+
+  .tech-icon-box {
+    background: rgba(15, 23, 42, 0.8);
+    border: 1px solid #334155;
+    padding: 0.75rem;
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+  }
+
+  .tech-content h3 {
+    font-size: 1.05rem;
+    font-weight: 600;
+    margin: 0 0 0.5rem 0;
+    color: #f1f5f9;
+  }
+
+  .tech-content p {
+    font-size: 0.875rem;
+    color: #94a3b8;
+    line-height: 1.4;
+    margin: 0 0 0.75rem 0;
+  }
+
+  .tech-status {
+    font-size: 0.75rem;
+    font-weight: 600;
+    font-family: monospace;
+    display: inline-block;
+  }
+
+  .status-active {
+    color: #4ade80;
+  }
+
+  .tech-banner-footer {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+    padding-top: 1.5rem;
+    border-top: 1px solid #1e293b;
+  }
+
+  .tech-url-display {
+    background: #020617;
+    border: 1px solid #334155;
+    padding: 0.6rem 1.2rem;
+    border-radius: 6px;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-family: monospace;
+    font-size: 0.9rem;
+    color: #e2e8f0;
+  }
+
+  .btn-verify {
+    background: #38bdf8;
+    color: #0f172a;
+    font-weight: 600;
+    font-size: 0.9rem;
+    padding: 0.6rem 1.4rem;
+    border-radius: 6px;
+    text-decoration: none;
+    transition: background 0.2s ease, box-shadow 0.2s ease;
+  }
+
+  .btn-verify:hover {
+    background: #0284c7;
+    color: #ffffff;
+    box-shadow: 0 0 10px rgba(56, 189, 248, 0.4);
+  }
+
+  @media (max-width: 600px) {
+    .tech-banner-card {
+      padding: 1.5rem 1rem;
+    }
+    .tech-banner-footer {
+      flex-direction: column;
+      align-items: stretch;
+      text-align: center;
+    }
+    .tech-url-display {
+      justify-content: center;
+    }
+  }
   </style>
 </head>
 <body>
@@ -693,6 +861,74 @@
        class="btn-float btn-call" 
        title="Llamar por teléfono">📞</a>
   </div>
+
+  <!-- BANNER: INFRAESTRUCTURA & DESPLIEGUE TECNOLÓGICO -->
+<section class="tech-banner-container">
+  <div class="tech-banner-card">
+    <div class="tech-banner-header">
+      <span class="tech-badge">Garantía de Rendimiento & Seguridad</span>
+      <h2>Infraestructura & Despliegue Tecnológico</h2>
+      <p class="tech-subtitle">
+        Plataforma optimizada de alto rendimiento alojada en red CDN global y configurada bajo estándares avanzados de ciberseguridad.
+      </p>
+    </div>
+
+    <div class="tech-grid">
+      <!-- Tarjeta 1: SSL -->
+      <div class="tech-item">
+        <div class="tech-icon-box">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#38bdf8" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect>
+            <path d="M7 11V7a5 5 0 0 1 10 0v4"></path>
+          </svg>
+        </div>
+        <div class="tech-content">
+          <h3>Conexión Cifrada SSL / HTTPS</h3>
+          <p>Certificado de seguridad activo con cifrado TLS/SSL de extremo a extremo, garantizando la privacidad e integridad de los datos transmitidos.</p>
+          <span class="tech-status status-active">● Cifrado Activo (256-bit)</span>
+        </div>
+      </div>
+
+      <!-- Tarjeta 2: Service Worker -->
+      <div class="tech-item">
+        <div class="tech-icon-box">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#38bdf8" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <polyline points="16 18 22 12 16 6"></polyline>
+            <polyline points="8 6 2 12 8 18"></polyline>
+          </svg>
+        </div>
+        <div class="tech-content">
+          <h3>Service Worker & PWA Core</h3>
+          <p>Módulo de almacenamiento en caché autónomo que acelera los tiempos de carga, gestiona el refresco en segundo plano y permite navegación offline.</p>
+          <span class="tech-status status-active">● Service Worker: Activated & Running</span>
+        </div>
+      </div>
+
+      <!-- Tarjeta 3: Cloudflare CDN -->
+      <div class="tech-item">
+        <div class="tech-icon-box">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#38bdf8" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M18 10h-1.26A8 8 0 1 0 9 20h9a5 5 0 0 0 0-10z"></path>
+          </svg>
+        </div>
+        <div class="tech-content">
+          <h3>Red CDN Cloudflare Pages</h3>
+          <p>Servidores globales con soporte nativo para HTTP/3 y protección automatizada contra mitigación de ataques DDoS.</p>
+          <span class="tech-status status-active">● Edge Network 100% Online</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Pie del Banner -->
+    <div class="tech-banner-footer">
+      <div class="tech-url-display">
+        <span class="lock-icon">🔒</span>
+        <span class="url-text">https://catalogoc404cs.pages.dev</span>
+      </div>
+      <a href="https://catalogoc404cs.pages.dev" target="_blank" rel="noopener" class="btn-verify">Verificar Estado en Vivo</a>
+    </div>
+  </div>
+</section>
 
   <!-- JAVASCRIPT LOGIC -->
   <script>
